@@ -25,13 +25,6 @@ public class MainController {
         this.gifService = gifService;
     }
 
-    @GetMapping("/{currency}")
-    public ExchangeRateChangeStatus getDailyChange(@PathVariable(value = "currency") String currency) {
-        final ExchangeRateChangeStatus dailyChange = exchangeService.getDailyChange(currency.toUpperCase());
-        log.info("Daily change for currency {} is {}", currency, dailyChange);
-        return dailyChange;
-    }
-
     @GetMapping("/gif/{currency}")
     public GifModel getDailyChangeGif(@PathVariable(value = "currency") String currency) {
         final ExchangeRateChangeStatus dailyChange = exchangeService.getDailyChange(currency);

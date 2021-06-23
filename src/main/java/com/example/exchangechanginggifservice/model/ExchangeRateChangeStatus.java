@@ -10,8 +10,8 @@ public enum ExchangeRateChangeStatus {
     DECREASED("decreased", "broke"),
     STAY("did not changed", "rich");
 
-    private String describe;
-    private String q;
+    private final String describe;
+    private final String q;
 
     ExchangeRateChangeStatus(String describe, String q) {
         this.describe = describe;

@@ -11,8 +11,5 @@ public interface ExchangeRatesService {
 
     Map<String, BigDecimal> getYesterdayExchangeRates();
 
-//    BigDecimal getCurrencyValue( Map<String, BigDecimal> rates, String currency);
-
     ExchangeRateChangeStatus getDailyChange(String currency);
-
 }

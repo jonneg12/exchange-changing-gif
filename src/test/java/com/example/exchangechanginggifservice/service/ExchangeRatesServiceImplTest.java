@@ -24,7 +24,7 @@ import static org.mockito.ArgumentMatchers.anyString;
 
 @Slf4j
 @SpringBootTest
-class ExchangeRatesServiceImplTestApi {
+class ExchangeRatesServiceImplTest {
 
     @MockBean
     private OpenExchangeRatesApi api;

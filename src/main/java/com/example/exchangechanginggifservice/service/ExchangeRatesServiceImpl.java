@@ -1,6 +1,5 @@
 package com.example.exchangechanginggifservice.service;
 
-import com.example.exchangechanginggifservice.exception.OutOfSuchCurrencyException;
 import com.example.exchangechanginggifservice.exception.ExchangeException;
 import com.example.exchangechanginggifservice.feign.OpenExchangeRatesApi;
 import com.example.exchangechanginggifservice.model.ExchangeRateChangeStatus;
@@ -17,7 +16,6 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.Locale;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -55,8 +53,6 @@ public class ExchangeRatesServiceImpl implements ExchangeRatesService {
         log.info("Today exchange service get rates");
         try {
             ExchangeRatesModel exchangeRates = api.getTodayExchangeRates(openExchangeRatesApiId, baseCurrency);
-
-            log.info("Got exchange rates: {}", exchangeRates);
             return exchangeRates.getRates();
         } catch (Exception e) {
             log.error("Today Exchange Rates exception {}", e.getMessage());
@@ -129,7 +125,6 @@ public class ExchangeRatesServiceImpl implements ExchangeRatesService {
     private boolean checkCurrency(String currency, Map<String, BigDecimal> todayRates, Map<String, BigDecimal> yesterdayRates) {
         return todayRates.containsKey(currency) && yesterdayRates.containsKey(currency);
     }
-
 
     private int getAccuracy(String accuracyLine) {
         int accuracy = DEFAULT_ACCURACY;
